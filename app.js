@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const ejs = require('ejs')
 const connectDB = require('./config/db');
 
-//connectDB();
+//connectDB(); 
 const bodyParser = require('body-parser');
 
 
@@ -19,6 +19,7 @@ bodyParser.urlencoded({ extended: true })
 // app.use(express.urlencoded({ extended: false }))
 
 const port = process.env.PORT || 4000
+
 
 
 dotenv.config();

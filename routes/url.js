@@ -1,36 +1,45 @@
 const express = require('express')
 const router = express.Router();
 const validUrl = require('valid-url');
-const shortid = require('shortid');
 const config = require('config')
+const shortid = require('shortid');
 const Url = require('../models/Url')
+const customid = require('custom-id')
 
-
-router.post('/shorten', (req, res) => {
-    const { longUrl } = req.body;
+router.post('/shorten', async (req, res) => {
+    const { address } = req.body;
     const baseUrl = config.get('baseUrl');
     //check base url
     if (!validUrl.isUri(baseUrl)) {
         return res.status(401).json('invalid base url')
     }
     //create url code
-    const urlCode = shortid.generate();
+    //    const urlCode = shortid.generate();
+    const urlCode = customid({
+        randomLength: 1
+    });
+
     //check long url
-    if (validUrl.isUri(longUrl)) {
+    if (validUrl.isUri(address)) {
         try {
-            let url = await Url.findOne({ longUrl })
+            let url = await Url.findOne({ address })
             if (url) {
-                res.json(url);
+                res.json({
+                    address: url.address,
+                    shortened: url.shortened
+                });
             } else {
-                const shortUrl = baseUrl + '/' + urlCode;
+                const shortened = baseUrl + '/' + urlCode;
                 url = new Url({
-                    longUrl,
-                    shortUrl,
-                    urlCode,
-                    date: new Date()
+                    address,
+                    shortened,
+                    urlCode
                 });
                 await url.save();
-                res.json(url);
+                res.json({
+                    address: url.address,
+                    shortened: url.shortened
+                });
             }
         } catch (err) {
             console.error(err);

@@ -4,13 +4,13 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose')
 
 const connectDB = require('./config/db');
-
+const PORT = 4000;
 connectDB();
 app.use(express.json({ extended: false }));
 // app.use(express.json())
 // app.use(express.urlencoded({ extended: false }))
 
-const PORT = 4000;
+
 
 
 // dotenv.config();

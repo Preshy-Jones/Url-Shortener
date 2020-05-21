@@ -18,7 +18,7 @@ bodyParser.urlencoded({ extended: true })
 // app.use(express.json())
 // app.use(express.urlencoded({ extended: false }))
 
-const PORT = 4000;
+const port = process.env.PORT || 4000
 
 
 dotenv.config();
@@ -36,5 +36,6 @@ app.use('/api/url', require('./routes/url'));
 
 
 
-
-app.listen(PORT, () => console.log(`server running on port ${PORT}`));
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`)
+})

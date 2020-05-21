@@ -6,6 +6,11 @@ const shortid = require('shortid');
 const Url = require('../models/Url')
 const customid = require('custom-id')
 
+
+
+router.get('/shorten', (req, res) => {
+    res.render('shortener')
+})
 router.post('/shorten', async (req, res) => {
     const { address } = req.body;
     const baseUrl = config.get('baseUrl');
@@ -48,7 +53,16 @@ router.post('/shorten', async (req, res) => {
     } else {
         res.status(401).json('Invalid long url')
     }
-
+    // res.render('register', {
+    //     errors,
+    //     name,
+    //     email,
+    //     password,
+    //     password2
+    // });
+    // res.render('shortener', {
+    //     url
+    // })
 });
 
 module.exports = router;

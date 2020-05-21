@@ -3,9 +3,6 @@ const router = express.Router();
 
 const Url = require('../models/Url')
 
-router.get('/shorten', (req, res) => {
-    res.render('shortener')
-})
 //handling requests 
 router.get('/:code', async (req, res) => {
     try {

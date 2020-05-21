@@ -8,9 +8,6 @@ const customid = require('custom-id')
 
 
 
-router.get('/shorten', (req, res) => {
-    res.render('shortener')
-})
 router.post('/shorten', async (req, res) => {
     const { address } = req.body;
     const baseUrl = config.get('baseUrl');
@@ -66,4 +63,3 @@ router.post('/shorten', async (req, res) => {
 });
 
 module.exports = router;
-

@@ -1,4 +1,4 @@
 {
     "mongoURI": "mongodb+srv://PreshyJones:confidence@myfirstcluster-2ekpt.mongodb.net/newdb?retryWrites=true&w=majority",
-    "baseUrl": "https://preshyurlshortener.herokuapp.com/"
+    "baseUrl": "https://preshyurlshortener.herokuapp.com"
 }

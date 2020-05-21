@@ -5,7 +5,8 @@ const mongoose = require('mongoose')
 const ejs = require('ejs')
 const connectDB = require('./config/db');
 
-connectDB(); const bodyParser = require('body-parser');
+//connectDB();
+const bodyParser = require('body-parser');
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -20,12 +21,12 @@ bodyParser.urlencoded({ extended: true })
 const PORT = 4000;
 
 
-// dotenv.config();
-// mongoose.connect(process.env.DB_CONNECT,
-//     { useNewUrlParser: true, useUnifiedTopology: true },
-//     () => console.log('connected to mongodb')
+dotenv.config();
+mongoose.connect(process.env.DB_CONNECT,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    () => console.log('connected to mongodb')
 
-// );
+);
 
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));

@@ -24,7 +24,7 @@ function App() {
             try {
               const resp = await axios({
                 method: "POST",
-                url: "/api/url/shorten",
+                url: "http://localhost:4000/api/url/shorten",
                 withCredentials: false,
 
                 headers: {
@@ -66,7 +66,7 @@ function App() {
                 type="submit"
                 disabled={isSubmitting}
               >
-                Submit
+                {`${isSubmitting ? "Loading..." : "Submit"}`}
               </Button>
             </Form>
           )}

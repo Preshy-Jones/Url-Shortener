@@ -24,7 +24,7 @@ function App() {
             try {
               const resp = await axios({
                 method: "POST",
-                url: "http://localhost:4000/api/url/shorten",
+                url: "/api/url/shorten",
                 withCredentials: false,
 
                 headers: {
